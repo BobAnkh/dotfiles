@@ -1,4 +1,4 @@
-# dotfile
+# dotfiles
 
 A repo to place my dotfiles
 
