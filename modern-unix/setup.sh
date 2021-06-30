@@ -1,4 +1,4 @@
-!#/usr/bin/sh
+#!/bin/bash
 sudo apt install bat -y
 
 # cargo install lsd
