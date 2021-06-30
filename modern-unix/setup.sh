@@ -1,5 +1,7 @@
 #!/bin/bash
-sudo apt install bat -y
+# sudo apt install bat -y
+wget  --no-check-certificate --content-disposition https://github.com/sharkdp/bat/releases/download/v0.18.1/bat_0.18.1_amd64.deb
+sudo dpkg -i bat_0.18.1_amd64.deb
 
 # cargo install lsd
 wget  --no-check-certificate --content-disposition https://github.com/Peltoche/lsd/releases/download/0.20.1/lsd_0.20.1_amd64.deb
