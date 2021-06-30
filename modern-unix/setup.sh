@@ -2,7 +2,7 @@
 sudo apt install bat -y
 
 # cargo install lsd
-wget https://github.com/Peltoche/lsd/releases/download/0.20.1/lsd_0.20.1_amd64.deb
+wget  --no-check-certificate --content-disposition https://github.com/Peltoche/lsd/releases/download/0.20.1/lsd_0.20.1_amd64.deb
 sudo dpkg -i lsd_0.20.1_amd64.deb
 
 # install rust
