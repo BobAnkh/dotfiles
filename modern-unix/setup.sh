@@ -1,5 +1,6 @@
 #!/bin/bash
 # sudo apt install bat -y
+sudo apt install wget -y
 wget  --no-check-certificate --content-disposition https://github.com/sharkdp/bat/releases/download/v0.18.1/bat_0.18.1_amd64.deb
 sudo dpkg -i bat_0.18.1_amd64.deb
 
@@ -12,6 +13,7 @@ if command -v rustc >/dev/null 2>&1; then
     echo 'Exists rustc...skip intstall!'
 else
     echo 'No exists rustc...install rust!'
+    sudo apt install curl -y
     curl https://sh.rustup.rs -sSf | sh -s
     # shellcheck disable=SC1091
     source "$HOME"/.cargo/env
