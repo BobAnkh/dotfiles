@@ -9,7 +9,7 @@ mk_folder() {
 
 
 # install zsh
-sudo apt-get install zsh -y
+sudo apt-get install zsh git wget -y
 
 # install zsh extensions
 mk_folder .zsh
