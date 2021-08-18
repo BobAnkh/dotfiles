@@ -23,5 +23,6 @@ chsh -s /usr/bin/zsh
 # use already-written configurations
 wget https://cdn.jsdelivr.net/gh/BobAnkh/dotfiles@main/zsh/.zshrc
 wget https://cdn.jsdelivr.net/gh/BobAnkh/dotfiles@main/zsh/.p10k.zsh
+wget https://cdn.jsdelivr.net/gh/BobAnkh/dotfiles/main/tmux/.tmux.conf
 
 echo "Please logout and login again!"
