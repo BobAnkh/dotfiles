@@ -23,5 +23,6 @@ chsh -s /usr/bin/zsh
 # use already-written configurations
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/BobAnkh/dotfiles/main/zsh/.zshrc
 wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/BobAnkh/dotfiles/main/zsh/.p10k.zsh
+wget --no-check-certificate --content-disposition https://raw.githubusercontent.com/BobAnkh/dotfiles/main/tmux/.tmux.conf
 
 echo "Please logout and login again!"
