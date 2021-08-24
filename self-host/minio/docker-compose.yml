@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    restart: unless-stopped
+    volumes:
+        - ${MINIO_DATA}:/data
+    expose:
+        - ${MINIO_PORT}
+        - ${MINIO_CONSOLE_PORT}
+    command: server /data --console-address ":9001"
+    environment:
+        MINIO_ROOT_USER: ${MINIO_ACCESS_KEY}
+        MINIO_ROOT_PASSWORD: ${MINIO_SECRET_KEY}
+        VIRTUAL_HOST: ${VIRTUAL_HOST}
+        LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+        LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+        VIRTUAL_PORT: ${MINIO_CONSOLE_PORT}
+    logging:
+        driver: ${NGINX_GEN_LOG_DRIVER:-json-file}
+        options:
+            max-size: ${NGINX_GEN_LOG_MAX_SIZE:-2m}
+            max-file: ${NGINX_GEN_LOG_MAX_FILE:-10}
+
+
+networks:
+    default:
+        external:
+            name: ${NETWORK:-proxy}
