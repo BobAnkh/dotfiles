@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  cloudreve:
+    image: xavierniu/cloudreve:latest
+    container_name: cloudreve
+    restart: unless-stopped
+    env_file:
+        - ./cloudreve.env
+    volumes:
+        - ${CLOUDREVE_UPLOADS}:/cloudreve/uploads
+        - ${CLOUDREVE_CONF}:/cloudreve/config
+        - ${CLOUDREVE_DB}:/cloudreve/db
+        - ${CLOUDREVE_AVATAR}:/cloudreve/avatar
+    expose:
+        - ${CLOUDREVE_PORT}
+    environment:
+        VIRTUAL_HOST: ${VIRTUAL_HOST}
+        LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+        LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+        VIRTUAL_PORT: ${CLOUDREVE_PORT}
+
+
+networks:
+    default:
+        external:
+            name: ${NETWORK:-proxy}
