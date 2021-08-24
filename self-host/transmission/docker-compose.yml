@@ -1,0 +1,33 @@
+version: "2"
+services:
+  transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    hostname: transmission
+    restart: unless-stopped
+    cpus: 0.6
+    mem_limit: 1g
+    ports:
+      - 51413:51413
+      - 51413:51413/udp
+    volumes:
+      - ${TR_CONFIG}:/config
+      - ${TR_DOWNLOADS}:/downloads
+      - ${TR_DOWNLOADS}/Watch:/watch
+      - /byr/byr:/byr
+    expose:
+        - ${TR_PORT}
+    environment:
+        VIRTUAL_HOST: ${VIRTUAL_HOST}
+        LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+        LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+        VIRTUAL_PORT: ${TR_PORT}
+        PUID: ${PUID}
+        PGID: ${PGID}
+        TZ: ${TZ}
+        USER: ${TR_USER}
+        PASS: ${TR_PASS}
+networks:
+    default:
+        external:
+            name: ${NETWORK:-proxy}
