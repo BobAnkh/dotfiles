@@ -23,3 +23,9 @@ echo 'source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 ```
 
 Then configure it as the suggestion or copy the dotfile `.zshrc` and `.p10k.zsh`
+
+## docker network
+
+```shell
+docker network create -d bridge --ipv6 --subnet="2604:abc0:64:3902:62eb::/80" --gateway="2604:abc0:64:3902:62eb::1" --subnet="172.19.0.0/16" --gateway="172.19.0.1" proxy
+```
