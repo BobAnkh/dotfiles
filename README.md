@@ -16,8 +16,8 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlev
 chsh -s /usr/bin/zsh
 
 # turn on the extension or just use already-written dotfile
-echo 'source ~/.zsh/share/zsh-autosuggestions/zsh-autosuggestions.zsh' >>~/.zshrc
-echo 'source ~/.zsh/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >>~/.zshrc
+echo 'source ~/.zsh//zsh-autosuggestions/zsh-autosuggestions.zsh' >>~/.zshrc
+echo 'source ~/.zsh//zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' >>~/.zshrc
 echo 'source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 # wget https://raw.githubusercontent.com/BobAnkh/dotfiles/main/zsh/.zshrc
 ```
