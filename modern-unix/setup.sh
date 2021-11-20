@@ -14,7 +14,7 @@ if command -v rustc >/dev/null 2>&1; then
 else
     echo 'No exists rustc...install rust!'
     sudo apt install curl -y
-    curl https://sh.rustup.rs -sSf | sh -s
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     # shellcheck disable=SC1091
     source "$HOME"/.cargo/env
 fi
