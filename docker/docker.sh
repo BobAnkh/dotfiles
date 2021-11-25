@@ -36,7 +36,7 @@ sudo curl -L https://github.com/docker/compose/releases/download/$COMPOSE_VERSIO
 sudo chmod +x /usr/local/bin/docker-compose
 
 # Install command completion
-sudo curl -L https://raw.githubusercontent.com/docker/compose/$COMPOSE_VERSION/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
+# sudo curl -L https://raw.githubusercontent.com/docker/compose/$COMPOSE_VERSION/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 
 # Check version
 docker-compose --version
