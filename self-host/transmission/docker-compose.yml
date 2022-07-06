@@ -31,3 +31,7 @@ networks:
     default:
         external:
             name: ${NETWORK:-proxy}
+# networks:
+#     default:
+#         name: ${NETWORK:-proxy}
+#         external: true
