@@ -44,11 +44,11 @@ fi
 # alias la='ls -A'
 # alias l='ls -CF'
 
-alias ls='lsd'
+# alias ls='lsd'
 alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
-alias cat='bat'
+# alias cat='bat'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
