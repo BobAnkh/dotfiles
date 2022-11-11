@@ -3,3 +3,6 @@
 	email = bobankhshen@gmail.com
 [core]
 	editor = vim
+[http]
+        sslVerify = false
+        postBuffer = 1048567000
