@@ -2,6 +2,12 @@
 
 A repo to place my dotfiles
 
+```shell
+wget --no-check-certificate --content-disposition https://ghproxy.com/https://raw.githubusercontent.com/BobAnkh/dotfiles/main/scripts/install.sh
+bash install.sh --rust-change-source --repo-proxy "https://ghproxy.com/https://github.com/" --file-proxy "https://ghproxy.com/https://raw.githubusercontent.com/" rust gitconfig unix-tool ohmyzsh
+chsh -s "$(which zsh)"
+```
+
 ## zsh
 
 ```shell

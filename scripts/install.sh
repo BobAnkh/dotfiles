@@ -25,6 +25,11 @@ install_rust() {
     fi
 }
 
+change_src_ubuntu() {
+    sudo sed -i "s@http://.*archive.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g" /etc/apt/sources.list
+    sudo sed -i "s@http://.*security.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g" /etc/apt/sources.list
+}
+
 install_gitconfig() {
     # install gitconfig
     wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/git/.gitconfig
@@ -79,17 +84,27 @@ while [[ $# -gt 0 ]]; do
         exit 1
         ;;
     --repo-proxy | -r)
-        REPO_PROXY=${2:-"https://github.com/"}
+        REPO_PROXY="https://github.com/"
+        if [ -n "$2" ]; then
+            REPO_PROXY="$2"
+            shift # past value 
+        fi
         shift # past argument
-        shift # past value
         ;;
     --file-proxy | -f)
-        FILE_PROXY=${2:-"https://raw.githubusercontent.com/"}
+        FILE_PROXY="https://raw.githubusercontent.com/"
+        if [ -n "$2" ]; then
+            FILE_PROXY="$2"
+            shift # past value
+        fi
         shift # past argument
-        shift # past value
         ;;
-    --rust-change-source)
+    --rust-change-src)
         RUST_CHANGE_SOURCE_ARG=true
+        shift
+        ;;
+    --ubuntu-change-src)
+        change_src_ubuntu
         shift
         ;;
     --* | -*)
