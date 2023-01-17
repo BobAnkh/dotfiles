@@ -77,7 +77,7 @@ install_modern_unix() {
 }
 
 install_vscode_cli() {
-    curl -L -max-redirs 5 https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64 --output code.tar.gz
+    curl -L -max-redirs 5 "https://code.visualstudio.com/sha/download?build=stable&os=cli-alpine-x64" --output code.tar.gz
     tar -zxvf code.tar.gz
     sudo install -s -m 755 -o root -g root code /usr/local/bin
 }
