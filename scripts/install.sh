@@ -82,6 +82,24 @@ install_vscode_cli() {
     sudo install -s -m 755 -o root -g root code /usr/local/bin
 }
 
+install_tpm() {
+    git clone "$1"tmux-plugins/tpm ~/.tmux/plugins/tpm
+    cat <<EOF >~/.tmux.conf
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-sidebar'
+run '~/.tmux/plugins/tpm/tpm'
+EOF
+    tmux source ~/.tmux.conf
+    echo "Press prefix+I to install all the plugins"
+}
+
+install_nvim() {
+    wget "$1"neovim/neovim/releases/download/stable/nvim-linux64.deb
+    sudo apt install ./nvim-linux64.deb
+    git clone "$1"LazyVim/starter ~/.config/nvim
+}
+
 POSITIONAL_ARGS=()
 
 while [[ $# -gt 0 ]]; do
@@ -93,7 +111,7 @@ while [[ $# -gt 0 ]]; do
         REPO_PROXY="https://github.com/"
         if [ -n "$2" ]; then
             REPO_PROXY="$2"
-            shift # past value 
+            shift # past value
         fi
         shift # past argument
         ;;
@@ -155,6 +173,12 @@ for arg in "$@"; do
         ;;
     vsc-cli)
         install_vscode_cli
+        ;;
+    tpm)
+        install_tpm "$REPO_PREFIX"
+        ;;
+    nvim)
+        install_nvim "$REPO_PREFIX"
         ;;
     esac
 done
