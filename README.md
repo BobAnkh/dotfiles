@@ -35,3 +35,11 @@ Then configure it as the suggestion or copy the dotfile `.zshrc` and `.p10k.zsh`
 ```shell
 docker network create -d bridge --ipv6 --subnet="2604:abc0:64:3902:62eb::/80" --gateway="2604:abc0:64:3902:62eb::1" --subnet="172.19.0.0/16" --gateway="172.19.0.1" proxy
 ```
+
+## Globally set git to use ssh instead of http(s)
+
+Ref: [stackoverflow](https://stackoverflow.com/questions/11200237)
+
+```
+git config --global url.ssh://git@github.com/.insteadOf https://github.com/
+```
