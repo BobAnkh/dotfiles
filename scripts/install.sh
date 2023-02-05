@@ -95,6 +95,7 @@ EOF
 }
 
 install_nvim() {
+    sudo apt install xclip -y
     wget "$1"neovim/neovim/releases/download/stable/nvim-linux64.deb
     sudo apt install ./nvim-linux64.deb
     git clone "$1"LazyVim/starter ~/.config/nvim
