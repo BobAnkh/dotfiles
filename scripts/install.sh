@@ -48,7 +48,7 @@ install_min_zsh() {
 install_ohmyzsh() {
     # install oh-my-zsh
     wget --no-check-certificate --content-disposition "$2"ohmyzsh/ohmyzsh/master/tools/install.sh
-    sh install.sh --skip-chsh && rm install.sh
+    sh install.sh --unattended && rm install.sh
 
     # install powerlevel10k
     git clone --depth=1 "$1"romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
@@ -73,6 +73,9 @@ install_modern_unix() {
         cargo install ripgrep
     else
         install_rust
+        sudo apt update -y && sudo apt install build-essential -y
+        cargo install fd-find
+        cargo install ripgrep
     fi
 }
 
