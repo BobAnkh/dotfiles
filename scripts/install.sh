@@ -36,30 +36,32 @@ install_gitconfig() {
 }
 
 install_min_zsh() {
-    mk_folder .zsh
+    mk_folder "$HOME"/.zsh
     git clone --depth=1 "$1"zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
     git clone --depth=1 "$1"zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     git clone --depth=1 "$1"romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
-    wget --no-check-certificate --content-disposition "$2"BobAnkh/dotfiles/main/zsh/.zshrc
-    wget --no-check-certificate --content-disposition "$2"BobAnkh/dotfiles/main/zsh/.p10k.zsh
-    wget --no-check-certificate --content-disposition "$2"BobAnkh/dotfiles/main/tmux/.tmux.conf
+    wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/zsh/.zshrc
+    wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/zsh/.p10k.zsh
+    wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/tmux/.tmux.conf
 }
 
 install_ohmyzsh() {
     # install oh-my-zsh
-    wget --no-check-certificate --content-disposition "$2"ohmyzsh/ohmyzsh/master/tools/install.sh
-    sh install.sh --unattended && rm install.sh
+    wget --no-check-certificate --content-disposition -P "$HOME" "$2"ohmyzsh/ohmyzsh/master/tools/install.sh
+    cd "$HOME" && sh install.sh --unattended && rm install.sh
 
+    mk_folder "$HOME"/.oh-my-zsh/custom/themes
+    mk_folder "$HOME"/.oh-my-zsh/custom/plugins
     # install powerlevel10k
     git clone --depth=1 "$1"romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
 
     # see https://github.com/zsh-users/zsh-autosuggestions/issues/673
-    git clone --depth=1 "$1"zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
-    git clone --depth=1 "$1"zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
+    git clone --depth=1 "$1"zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
+    git clone --depth=1 "$1"zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
 
-    wget --no-check-certificate --content-disposition "$2"BobAnkh/dotfiles/main/ohmyzsh/.zshrc
-    wget --no-check-certificate --content-disposition "$2"BobAnkh/dotfiles/main/ohmyzsh/.p10k.zsh
-    wget --no-check-certificate --content-disposition "$2"BobAnkh/dotfiles/main/tmux/.tmux.conf
+    wget --no-check-certificate --content-disposition -P "$HOME" -O .zshrc "$2"BobAnkh/dotfiles/main/ohmyzsh/.zshrc
+    wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/ohmyzsh/.p10k.zsh
+    wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/tmux/.tmux.conf
 }
 
 install_zsh() {
