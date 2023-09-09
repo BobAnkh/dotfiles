@@ -40,9 +40,9 @@ install_min_zsh() {
     git clone --depth=1 "$1"zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
     git clone --depth=1 "$1"zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
     git clone --depth=1 "$1"romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
-    wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/zsh/.zshrc
-    wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/zsh/.p10k.zsh
-    wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/tmux/.tmux.conf
+    # wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/zsh/.zshrc
+    # wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/zsh/.p10k.zsh
+    # wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/tmux/.tmux.conf
 }
 
 install_ohmyzsh() {
@@ -59,9 +59,9 @@ install_ohmyzsh() {
     git clone --depth=1 "$1"zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
     git clone --depth=1 "$1"zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
 
-    wget --no-check-certificate --content-disposition -P "$HOME" -O .zshrc "$2"BobAnkh/dotfiles/main/ohmyzsh/.zshrc
-    wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/ohmyzsh/.p10k.zsh
-    wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/tmux/.tmux.conf
+    # wget --no-check-certificate --content-disposition -P "$HOME" -O .zshrc "$2"BobAnkh/dotfiles/main/ohmyzsh/.zshrc
+    # wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/ohmyzsh/.p10k.zsh
+    # wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/tmux/.tmux.conf
 }
 
 install_zsh() {
@@ -89,14 +89,14 @@ install_vscode_cli() {
 
 install_tpm() {
     git clone "$1"tmux-plugins/tpm ~/.tmux/plugins/tpm
-    cat <<EOF >~/.tmux.conf
-set -g @plugin 'tmux-plugins/tpm'
-set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'tmux-plugins/tmux-sidebar'
-run '~/.tmux/plugins/tpm/tpm'
-EOF
-    tmux source ~/.tmux.conf
-    echo "Press prefix+I to install all the plugins"
+#     cat <<EOF >~/.tmux.conf
+# set -g @plugin 'tmux-plugins/tpm'
+# set -g @plugin 'tmux-plugins/tmux-sensible'
+# set -g @plugin 'tmux-plugins/tmux-sidebar'
+# run '~/.tmux/plugins/tpm/tpm'
+# EOF
+    echo "Please run: tmux source ~/.tmux.conf"
+    echo "Please press: prefix+I to install all the plugins"
 }
 
 install_nvim() {

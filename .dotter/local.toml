@@ -1,0 +1,6 @@
+includes = []
+packages = ["ohmyzsh", "rust", "zellij"]
+
+[files]
+
+[variables]
