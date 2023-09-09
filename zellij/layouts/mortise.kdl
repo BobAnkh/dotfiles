@@ -1,0 +1,40 @@
+layout {
+    default_tab_template {
+        // the default zellij tab-bar and status bar plugins
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    pane_template name="vagrant-ssh" {
+        command "vagrant"
+        args "ssh" "--" "-t" "cd mortise; $SHELL"
+    }
+    tab name="rsync" split_direction="horizontal" focus=true {
+        pane split_direction="horizontal" {
+            pane size="50%" name="vagrant-rsync" {
+                cwd "$HOME/mortise"
+            }
+            pane size="50%" name="vagrant-rsync-back" {
+                cwd "$HOME/mortise"
+            }
+        }
+    }
+    tab name="experiment" split_direction="horizontal" cwd="$HOME/mortise" {
+        pane split_direction="vertical" {
+            vagrant-ssh size="45%" name="exec"
+            pane size="55%" split_direction="horizontal" {
+                pane size="45%" split_direction="vertical" {
+                    vagrant-ssh name="receiver"
+                    vagrant-ssh name="manager"
+                }
+                vagrant-ssh size="55%" name="bpf" {
+                    args "ssh" "--" "-t" "cd algorithm/bpf-kern; $SHELL"
+                }
+            } 
+        }
+    }
+}
