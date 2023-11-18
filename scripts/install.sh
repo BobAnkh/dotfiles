@@ -19,10 +19,10 @@ install_rust() {
         # shellcheck disable=SC1091
         source "$HOME"/.cargo/env
     fi
-    if $1; then
-        mk_folder .cargo
-        wget --no-check-certificate --content-disposition -P .cargo "$2"BobAnkh/dotfiles/main/rust/.config
-    fi
+    # if $1; then
+    #     mk_folder .cargo
+    #     wget --no-check-certificate --content-disposition -P .cargo "$2"BobAnkh/dotfiles/main/rust/.config
+    # fi
 }
 
 change_src_ubuntu() {
@@ -30,10 +30,10 @@ change_src_ubuntu() {
     sudo sed -i "s@http://.*security.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn@g" /etc/apt/sources.list
 }
 
-install_gitconfig() {
-    # install gitconfig
-    wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/git/.gitconfig
-}
+# install_gitconfig() {
+#     # install gitconfig
+#     wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/git/.gitconfig
+# }
 
 install_min_zsh() {
     mk_folder "$HOME"/.zsh
@@ -47,17 +47,17 @@ install_min_zsh() {
 
 install_ohmyzsh() {
     # install oh-my-zsh
-    wget --no-check-certificate --content-disposition -P "$HOME" "$2"ohmyzsh/ohmyzsh/master/tools/install.sh
+    wget --no-check-certificate --content-disposition -P "$HOME" https://raw.githubusercontent.com/ohmyzsh/master/tools/install.sh
     cd "$HOME" && sh install.sh --unattended && rm install.sh
 
     mk_folder "$HOME"/.oh-my-zsh/custom/themes
     mk_folder "$HOME"/.oh-my-zsh/custom/plugins
     # install powerlevel10k
-    git clone --depth=1 "$1"romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
 
     # see https://github.com/zsh-users/zsh-autosuggestions/issues/673
-    git clone --depth=1 "$1"zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
-    git clone --depth=1 "$1"zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
+    git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
+    git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
 
     # wget --no-check-certificate --content-disposition -P "$HOME" -O .zshrc "$2"BobAnkh/dotfiles/main/ohmyzsh/.zshrc
     # wget --no-check-certificate --content-disposition -P "$HOME" "$2"BobAnkh/dotfiles/main/ohmyzsh/.p10k.zsh
@@ -70,15 +70,15 @@ install_zsh() {
 
 install_modern_unix() {
     if command -v rustc >/dev/null 2>&1; then
-        sudo apt update -y && sudo apt install build-essential -y
-        cargo install fd-find
-        cargo install ripgrep
+        echo "Install modern unix tool collections..."
     else
         install_rust
-        sudo apt update -y && sudo apt install build-essential -y
-        cargo install fd-find
-        cargo install ripgrep
+        echo "Install modern unix tool collections..."
     fi
+    sudo apt update -y && sudo apt install build-essential xclip -y
+    cargo install --locked fd-find
+    cargo install --locked ripgrep
+    cargo install --locked zellij
 }
 
 install_vscode_cli() {
@@ -89,21 +89,21 @@ install_vscode_cli() {
 
 install_tpm() {
     git clone "$1"tmux-plugins/tpm ~/.tmux/plugins/tpm
-#     cat <<EOF >~/.tmux.conf
-# set -g @plugin 'tmux-plugins/tpm'
-# set -g @plugin 'tmux-plugins/tmux-sensible'
-# set -g @plugin 'tmux-plugins/tmux-sidebar'
-# run '~/.tmux/plugins/tpm/tpm'
-# EOF
+    #     cat <<EOF >~/.tmux.conf
+    # set -g @plugin 'tmux-plugins/tpm'
+    # set -g @plugin 'tmux-plugins/tmux-sensible'
+    # set -g @plugin 'tmux-plugins/tmux-sidebar'
+    # run '~/.tmux/plugins/tpm/tpm'
+    # EOF
     echo "Please run: tmux source ~/.tmux.conf"
     echo "Please press: prefix+I to install all the plugins"
 }
 
 install_nvim() {
     sudo apt install xclip -y
-    wget "$1"neovim/neovim/releases/download/stable/nvim-linux64.deb
+    wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
     sudo apt install ./nvim-linux64.deb
-    git clone "$1"LazyVim/starter ~/.config/nvim
+    # git clone "$1"LazyVim/starter ~/.config/nvim
 }
 
 POSITIONAL_ARGS=()
