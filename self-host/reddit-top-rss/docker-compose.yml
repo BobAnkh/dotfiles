@@ -1,0 +1,20 @@
+version: '3'
+services:
+  reddit-top-rss:
+    image: johnny5w/reddit-top-rss
+    container_name: reddit-top-rss
+    restart: unless-stopped
+    expose:
+        - ${RSS_PORT}
+    environment:
+        DEFAULT_SUBREDDIT: "news"
+        VIRTUAL_HOST: ${VIRTUAL_HOST}
+        LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+        LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+        VIRTUAL_PORT: ${RSS_PORT}
+
+
+networks:
+    default:
+        external: true
+        name: ${NETWORK:-proxy}
