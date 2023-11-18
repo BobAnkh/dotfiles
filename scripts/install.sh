@@ -69,16 +69,23 @@ install_zsh() {
 }
 
 install_modern_unix() {
-    if command -v rustc >/dev/null 2>&1; then
-        echo "Install modern unix tool collections..."
-    else
+    if ! command -v rustc >/dev/null 2>&1; then
         install_rust
-        echo "Install modern unix tool collections..."
     fi
+    echo "Install modern unix tool collections..."
     sudo apt update -y && sudo apt install build-essential xclip -y
-    cargo install --locked fd-find
-    cargo install --locked ripgrep
-    cargo install --locked zellij
+
+    if ! command -v fd >/dev/null 2>&1; then
+        cargo install --locked fd-find
+    fi
+
+    if ! command -v rg >/dev/null 2>&1; then
+        cargo install --locked ripgrep
+    fi
+
+    if ! command -v zellij >/dev/null 2>&1; then
+        cargo install --locked zellij
+    fi
 }
 
 install_vscode_cli() {

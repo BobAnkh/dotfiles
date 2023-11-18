@@ -1,8 +1,10 @@
 #!/usr/bin/bash
 
-bash scripts/install.sh --rust-change-source --repo-proxy "https://ghproxy.com/https://github.com/" --file-proxy "https://ghproxy.com/https://raw.githubusercontent.com/" rust gitconfig unix-tool ohmyzsh
+bash scripts/install.sh --rust-change-source --repo-proxy "https://github.com/" --file-proxy "https://raw.githubusercontent.com/" rust unix-tool ohmyzsh
 
 # change shell
 chsh -s "$(which zsh)"
+
+./bin/dotter -f deploy
 
 echo "Please logout and login again!"
