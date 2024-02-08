@@ -25,4 +25,4 @@ depends = ["git", "tmux"]
 "ohmyzsh/.p10k.zsh" = { type = "symbolic", target = "~/.p10k.zsh"}
 
 [zellij.files]
-"zellij" = { type = "symbolic", target = "~/.config/zellij" }
+"zellij" = { type = "symbolic", target = "~/.config/zellij", recurse = false }
