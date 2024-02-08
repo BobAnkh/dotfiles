@@ -1,5 +1,5 @@
 includes = []
-packages = ["ohmyzsh", "rust", "zellij"]
+packages = ["ohmyzsh", "rust", "zellij", "git", "tmux"]
 
 [files]
 

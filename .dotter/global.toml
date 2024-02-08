@@ -9,15 +9,9 @@
 [tmux.files]
 "tmux/.tmux.conf" = { type = "symbolic", target = "~/.tmux.conf"}
 
-[zsh]
-depends = ["git", "tmux"]
-
 [zsh.files]
 "zsh/.zshrc" = { type = "symbolic", target = "~/.zshrc"}
 "zsh/.p10k.zsh" = { type = "symbolic", target = "~/.p10k.zsh"}
-
-[ohmyzsh]
-depends = ["git", "tmux"]
 
 [ohmyzsh.files]
 # "ohmyzsh/.oh-my-zsh" = { type = "symbolic", target = "~/.oh-my-zsh"}
@@ -26,3 +20,6 @@ depends = ["git", "tmux"]
 
 [zellij.files]
 "zellij" = { type = "symbolic", target = "~/.config/zellij", recurse = false }
+
+# [nvim.files]
+# "nvim" = { type = "symbolic", target = "~/.config/nvim", recurse = false }
