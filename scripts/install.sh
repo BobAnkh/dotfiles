@@ -47,7 +47,7 @@ install_min_zsh() {
 
 install_ohmyzsh() {
     # install oh-my-zsh
-    wget --no-check-certificate --content-disposition -P "$HOME" https://raw.githubusercontent.com/ohmyzsh/master/tools/install.sh
+    wget --no-check-certificate --content-disposition -P "$HOME" https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     cd "$HOME" && sh install.sh --unattended && rm install.sh
 
     mk_folder "$HOME"/.oh-my-zsh/custom/themes
