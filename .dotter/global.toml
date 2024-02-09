@@ -21,5 +21,5 @@
 [zellij.files]
 "zellij" = { type = "symbolic", target = "~/.config/zellij", recurse = false }
 
-# [nvim.files]
-# "nvim" = { type = "symbolic", target = "~/.config/nvim", recurse = false }
+[nvim.files]
+"nvim" = { type = "symbolic", target = "~/.config/nvim", recurse = false }
