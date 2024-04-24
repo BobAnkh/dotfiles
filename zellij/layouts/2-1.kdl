@@ -1,0 +1,21 @@
+layout {
+    default_tab_template {
+        // the default zellij tab-bar and status bar plugins
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    tab name="2left-right" split_direction="horizontal" focus=true {
+        pane split_direction="vertical" {
+            pane size="50%" name="left" split_direction="horizontal" {
+                pane size="50%" name="left-top"
+                pane size="50%" name="left-bottom"
+            }
+            pane size="50%" name="right"
+        }
+    }
+}
