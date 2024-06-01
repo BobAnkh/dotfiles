@@ -17,7 +17,7 @@ require("lazy").setup({
     -- import/override with your plugins
     { import = "plugins" },
     {
-      import = "vscode",
+      import = "vsc-nvim",
       cond = function()
         return vim.g.vscode
       end,
