@@ -1,7 +1,7 @@
 [helpers]
 
 [rust.files]
-"rust/.cargo/config" = { type = "symbolic", target = "~/.cargo/config", if = '(is_executable "rustc")'}
+"rust/.cargo/config.toml" = { type = "symbolic", target = "~/.cargo/config.toml", if = '(is_executable "rustc")'}
 
 [git.files]
 "git/.gitconfig" = { type = "symbolic", target = "~/.gitconfig"}
