@@ -6,3 +6,5 @@
 [http]
 	sslVerify = false
 	postBuffer = 1048567000
+[init]
+        defaultBranch = main
