@@ -79,12 +79,10 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	ripgrep
 	rust
 	sudo 
 	zsh-autosuggestions
 	zsh-syntax-highlighting
-	fd
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
