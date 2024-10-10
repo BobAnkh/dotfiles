@@ -113,6 +113,13 @@ install_nvim() {
     # git clone "$1"LazyVim/starter ~/.config/nvim
 }
 
+install_fzf() {
+    mk_folder ~/tools
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/tools/fzf
+    cd ~/tools/fzf && ./install --all --completion --key-bindings --no-bash
+
+}
+
 POSITIONAL_ARGS=()
 
 while [[ $# -gt 0 ]]; do
@@ -193,5 +200,8 @@ for arg in "$@"; do
     nvim)
         install_nvim "$REPO_PREFIX"
         ;;
+    fzf)
+	install_fzf
+	;;
     esac
 done
