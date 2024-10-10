@@ -83,7 +83,7 @@ plugins=(
 	sudo 
 	zsh-autosuggestions
 	zsh-syntax-highlighting
-	z
+	zoxide
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
