@@ -19,8 +19,13 @@ else
     source "$HOME"/.cargo/env
 fi
 
-cargo install du-dust
+cargo install du-dust --locked
 
-cargo install procs
+cargo install procs --locked
 
-cargo install broot
+cargo install broot --locked
+
+cargo install zoxide --locked
+
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
