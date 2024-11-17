@@ -69,6 +69,7 @@ install_zsh() {
 }
 
 install_modern_unix() {
+    mk_folder() ~/tools
     if ! command -v rustc >/dev/null 2>&1; then
         install_rust
     fi
@@ -85,6 +86,10 @@ install_modern_unix() {
 
     if ! command -v zellij >/dev/null 2>&1; then
         cargo install --locked zellij
+    fi
+
+    if ! command -v zoxide >/dev/null 2>&1; then
+        cargo install --locked zoxide
     fi
 }
 
