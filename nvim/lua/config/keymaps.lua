@@ -25,8 +25,3 @@ vim.keymap.set("i", "<A-Down>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" 
 vim.keymap.set("i", "<A-Up>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
 vim.keymap.set("v", "<A-Down>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 vim.keymap.set("v", "<A-Up>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
-if vim.g.vscode then
-  vim.keymap.set("n", "gc", "<Plug>VSCodeCommentaryLine")
-  vim.keymap.set("o", "gc", "<Plug>VSCodeCommentaryLine")
-  vim.keymap.set("v", "gc", "<Plug>VSCodeCommentaryLine")
-end
