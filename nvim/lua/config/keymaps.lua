@@ -14,7 +14,6 @@ vim.keymap.set("n", "<leader>Y", '"+Y', { desc = 'Yank into " register' })
 -- Delete text to " register
 vim.keymap.set("n", "<leader>d", '"_d', { desc = 'Delete into " register' })
 vim.keymap.set("v", "<leader>d", '"_d', { desc = 'Delete into " register' })
-vim.keymap.set("n", "<A-Up>", "<cmd>m .-2<cr>==", { desc = "Move up" })
 
 -- Move block
 -- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Block Down" })
