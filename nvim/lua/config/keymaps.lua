@@ -6,14 +6,25 @@ vim.keymap.set("n", "Y", "y$")
 
 -- Select all
 vim.keymap.set("n", "==", "gg<S-v>G")
--- Copy text to " register
-vim.keymap.set("n", "<leader>y", '"+y', { desc = 'Yank into " register' })
-vim.keymap.set("v", "<leader>y", '"+y', { desc = 'Yank into " register' })
-vim.keymap.set("n", "<leader>Y", '"+Y', { desc = 'Yank into " register' })
+-- Copy text to + register
+vim.keymap.set("n", "<leader>y", '"+y', { desc = "Yank into + register" })
+vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Yank into + register" })
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank into + register" })
 
--- Delete text to " register
-vim.keymap.set("n", "<leader>d", '"_d', { desc = 'Delete into " register' })
-vim.keymap.set("v", "<leader>d", '"_d', { desc = 'Delete into " register' })
+-- Paste text from + register
+vim.keymap.set("n", "<leader>p", '"+p', { desc = "Paste from + register" })
+vim.keymap.set("n", "<leader>P", '"+P', { desc = "Paste from + register" })
+vim.keymap.set("v", "<leader>p", '"+p', { desc = "Paste from + register" })
+vim.keymap.set("v", "<leader>P", '"+P', { desc = "Paste from + register" })
+
+-- Delete text to _ register
+vim.keymap.set("n", "<localleader>d", '"_d', { desc = "Delete into _ register" })
+vim.keymap.set("n", "<localleader>D", '"_D', { desc = "Delete into _ register" })
+vim.keymap.set("v", "<localleader>d", '"_d', { desc = "Delete into _ register" })
+vim.keymap.set("v", "<localleader>p", '"_dP', { desc = "Delete into _ register and paste" })
+vim.keymap.set("n", "<localleader>c", '"+d', { desc = "Cut into + register" })
+vim.keymap.set("n", "<localleader>C", '"+D', { desc = "Cut into + register" })
+vim.keymap.set("v", "<localleader>c", '"+d', { desc = "Cut into + register" })
 
 -- Move block
 -- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Block Down" })
