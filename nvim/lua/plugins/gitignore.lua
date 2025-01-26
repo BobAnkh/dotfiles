@@ -1,0 +1,1 @@
+return { "BobAnkh/nvim-gitignore" }
