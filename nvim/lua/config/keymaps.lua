@@ -8,7 +8,7 @@ vim.keymap.set("n", "Y", "y$")
 vim.keymap.set("n", "==", "gg<S-v>G")
 -- Copy text to + register
 vim.keymap.set("n", "<leader>y", '"+y', { desc = "Yank into + register" })
-vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Yank into + register" })
+vim.keymap.set("n", "<leader>Y", '"+y$', { desc = "Yank into + register" })
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank into + register" })
 
 -- Paste text from + register
