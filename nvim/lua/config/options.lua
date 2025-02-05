@@ -4,3 +4,4 @@
 
 -- Sync clipboard with system clipboard
 -- vim.opt.clipboard = vim.env.SSH_TTY and "unnamed" or "unnamedplus"
+vim.opt.diffopt = "filler,internal,closeoff,algorithm:histogram,context:5,linematch:60"
