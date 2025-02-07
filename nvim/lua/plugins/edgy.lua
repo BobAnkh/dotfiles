@@ -36,8 +36,19 @@ return {
         "NeoTreeNormalNC",
       },
     },
+    config = function()
+      require("transparent").clear_prefix("BufferLine")
+      require("transparent").clear_prefix("lualine")
+    end,
     keys = {
-      { "<leader>ut", "<cmd>TransparentToggle<cr>", desc = "Toggle Transparency" },
+      {
+        "<leader>ut",
+        function()
+          require("transparent").toggle()
+          require("incline").enable()
+        end,
+        desc = "Toggle Transparency",
+      },
     },
   },
 }
