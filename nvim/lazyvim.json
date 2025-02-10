@@ -29,7 +29,7 @@
     "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.vscode"
   ],
-  "install_version": 7,
+  "install_version": 8,
   "news": {
     "NEWS.md": "10960"
   },
