@@ -42,7 +42,7 @@ return {
     end,
     keys = {
       {
-        "<leader>ut",
+        "<leader>uP",
         function()
           require("transparent").toggle()
           require("incline").enable()
