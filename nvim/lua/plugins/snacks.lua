@@ -27,6 +27,9 @@ return {
           ignored = true,
           follow = true,
           exclude = excluded,
+          -- layout = {
+          --   auto_hide = { "input" },
+          -- },
         },
       },
     },
