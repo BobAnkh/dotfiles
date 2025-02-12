@@ -31,6 +31,14 @@ return {
           --   auto_hide = { "input" },
           -- },
         },
+        files = {
+          -- show hidden files like .env
+          hidden = true,
+          -- show files ignored by git like node_modules
+          ignored = true,
+          follow = true,
+          exclude = excluded,
+        },
       },
     },
   },
