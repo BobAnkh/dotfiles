@@ -1,9 +1,9 @@
 local excluded = {
-  "node_modules/",
-  "dist/",
-  ".git/",
-  "build/",
-  "target/",
+  "node_modules",
+  "dist",
+  ".git",
+  "build",
+  "target",
 }
 
 return {
