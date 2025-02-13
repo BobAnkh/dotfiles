@@ -1,4 +1,5 @@
 local excluded = {
+  ".vagrant",
   "node_modules",
   "dist",
   ".git",
