@@ -5,6 +5,8 @@ local excluded = {
   ".git",
   "build",
   "target",
+  ".venv",
+  ".ruff_cache",
 }
 
 return {
