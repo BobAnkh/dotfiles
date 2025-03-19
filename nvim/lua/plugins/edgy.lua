@@ -29,6 +29,33 @@ return {
   --   end,
   -- },
   {
+    "folke/edgy.nvim",
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      local bottom = opts["bottom"]
+      -- function dump(o)
+      --   if type(o) == "table" then
+      --     local s = "{ "
+      --     for k, v in pairs(o) do
+      --       if type(k) ~= "number" then
+      --         k = '"' .. k .. '"'
+      --       end
+      --       s = s .. "[" .. k .. "] = " .. dump(v) .. ","
+      --     end
+      --     return s .. "} "
+      --   else
+      --     return tostring(o)
+      --   end
+      -- end
+      for _, v in pairs(bottom) do
+        if v["ft"] == "qf" then
+          v["size"] = { height = 0.4 }
+        end
+      end
+      table.insert(opts, { wo = { winhighlight = "" } })
+    end,
+  },
+  {
     "xiyaowong/transparent.nvim",
     opts = {
       extra_groups = {
