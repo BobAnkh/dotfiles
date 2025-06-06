@@ -18,6 +18,7 @@ install_rust() {
 		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 		# shellcheck disable=SC1091
 		source "$HOME"/.cargo/env
+  		rustup component add rust-analyzer
 	fi
 	# if $1; then
 	#     mk_folder .cargo
