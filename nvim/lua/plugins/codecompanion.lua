@@ -27,13 +27,21 @@ return {
       {
         "<leader>ac",
         "<cmd>CodeCompanionChat Toggle<CR>",
+        mode = {"n", "v"},
         desc = "Code Companion Chat",
       },
       {
         "<leader>ai",
         "<cmd>CodeCompanion<CR>",
+        mode = {"n", "v"},
         desc = "Code Companion Inline",
       },
+      {
+        "gaa",
+        "<cmd>CodeCompanionChat Add<cr>",
+        mode = {"v"},
+        desc = "Accept Code Companion Modification"
+      }
     },
   },
   {
