@@ -8,3 +8,4 @@ vim.opt.diffopt = "filler,internal,closeoff,algorithm:histogram,context:5,linema
 if vim.g.neovide then
   vim.o.guifont = "Hack Nerd Font Mono:h12"
 end
+-- vim.diagnostic.config({ virtual_text = true })
