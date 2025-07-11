@@ -18,7 +18,7 @@ install_rust() {
 		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 		# shellcheck disable=SC1091
 		source "$HOME"/.cargo/env
-  		rustup component add rust-analyzer
+		rustup component add rust-analyzer
 	fi
 	# if $1; then
 	#     mk_folder .cargo
@@ -48,8 +48,9 @@ install_min_zsh() {
 
 install_ohmyzsh() {
 	# install oh-my-zsh
-	wget --no-check-certificate --content-disposition -P "$HOME" https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
-	cd "$HOME" && sh install.sh --unattended && rm install.sh
+	# wget --no-check-certificate --content-disposition -P "$HOME" https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+	# cd "$HOME" && sh install.sh --unattended && rm install.sh
+	wget --no-check-certificate --content-disposition -qO https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -s -- --unattended
 
 	mk_folder "$HOME"/.oh-my-zsh/custom/themes
 	mk_folder "$HOME"/.oh-my-zsh/custom/plugins
@@ -66,7 +67,11 @@ install_ohmyzsh() {
 }
 
 install_zsh() {
-	sudo apt update -y && sudo apt-get install zsh -y
+	if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+		sudo apt update -y && sudo apt-get install zsh -y
+	elif [[ "$OSTYPE" == "darwin"* ]]; then
+		brew install zsh
+	fi
 }
 
 install_modern_unix() {
@@ -75,7 +80,11 @@ install_modern_unix() {
 		install_rust
 	fi
 	echo "Install modern unix tool collections..."
-	sudo apt update -y && sudo apt install build-essential xclip -y
+	if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+		sudo apt update -y && sudo apt install build-essential xclip -y
+	elif [[ "$OSTYPE" == "darwin"* ]]; then
+		:
+	fi
 
 	if ! command -v fd >/dev/null 2>&1; then
 		cargo install --locked fd-find
@@ -102,11 +111,15 @@ install_modern_unix() {
 	fi
 
 	if ! command -v lazygit >/dev/null 2>&1; then
-		LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
-		curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-		tar xf lazygit.tar.gz lazygit
-		sudo install lazygit -D -t /usr/local/bin/
-		rm lazygit.tar.gz && rm -rf lazygit
+		if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+			LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*')
+			curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+			tar xf lazygit.tar.gz lazygit
+			sudo install lazygit -D -t /usr/local/bin/
+			rm lazygit.tar.gz && rm -rf lazygit
+		elif [[ "$OSTYPE" == "darwin"* ]]; then
+			brew install lazygit
+		fi
 	fi
 }
 
