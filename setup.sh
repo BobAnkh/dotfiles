@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-bash scripts/install.sh --rust-change-src --repo-proxy "https://github.com/" --file-proxy "https://raw.githubusercontent.com/" rust unix-tool ohmyzsh
+bash scripts/install.sh --rust-change-src --repo-proxy "https://github.com/" --file-proxy "https://raw.githubusercontent.com/" rust unix-tool ohmyzsh node fzf
 
 # change shell
 chsh -s "$(which zsh)"
