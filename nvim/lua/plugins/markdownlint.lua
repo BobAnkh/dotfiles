@@ -6,11 +6,11 @@ return {
       markdown = { "markdownlint-cli2" },
     },
     linters = {
-      ['markdownlint-cli2'] = {
+      ["markdownlint-cli2"] = {
         args = {
-          '--config',
-          vim.fn.stdpath('config') .. '/lua/plugins/cfg_linters/.markdownlint-cli2.yaml',
-          '--',
+          "--config",
+          vim.fn.stdpath("config") .. "/lua/plugins/cfg_linters/.markdownlint-cli2.yaml",
+          "--",
         },
       },
     },
