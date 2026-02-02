@@ -21,6 +21,7 @@ return {
     },
   },
   opts = {
+    image = {},
     picker = {
       previewers = {
         diff = {
