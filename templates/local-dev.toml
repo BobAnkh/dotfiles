@@ -1,0 +1,11 @@
+# Profile: Full development workstation
+# Installs: rust ohmyzsh unix-tool node fzf nvim
+#
+# Usage: cp templates/local-dev.toml .dotter/local.toml
+
+includes = []
+packages = ["ohmyzsh", "rust", "zellij", "git", "tmux", "nvim", "lazygit", "claude"]
+
+[files]
+
+[variables]

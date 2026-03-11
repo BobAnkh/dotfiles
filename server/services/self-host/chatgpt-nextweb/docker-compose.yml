@@ -1,0 +1,24 @@
+version: '3'
+services:
+  chatgpt:
+    image: yidadaa/chatgpt-next-web
+    container_name: chatgpt
+    restart: unless-stopped
+    expose:
+        - ${CHATWEB_PORT}
+    sysctls:
+        net.ipv6.conf.all.disable_ipv6: 1
+    environment:
+        VIRTUAL_HOST: ${VIRTUAL_HOST}
+        LETSENCRYPT_HOST: ${LETSENCRYPT_HOST}
+        LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+        VIRTUAL_PORT: ${CHATWEB_PORT}
+        OPENAI_API_KEY: ${API_KEY}
+        BASE_URL: ${BASE_URL}
+        CODE: ${CODE}
+
+
+networks:
+    default:
+        external: true
+        name: ${NETWORK:-proxy}

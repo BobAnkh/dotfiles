@@ -1,0 +1,11 @@
+# Profile: Minimal (git config only)
+# Installs: (nothing, just deploy configs)
+#
+# Usage: cp templates/local-minimal.toml .dotter/local.toml
+
+includes = []
+packages = ["git"]
+
+[files]
+
+[variables]

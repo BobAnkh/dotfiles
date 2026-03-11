@@ -1,0 +1,11 @@
+# Profile: Minimal server setup
+# Installs: rust ohmyzsh unix-tool
+#
+# Usage: cp templates/local-server.toml .dotter/local.toml
+
+includes = []
+packages = ["ohmyzsh", "git", "tmux"]
+
+[files]
+
+[variables]
