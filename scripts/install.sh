@@ -168,7 +168,10 @@ install_nvim() {
   NVIM_TAG=$(git describe --tags "$(git rev-list --tags --max-count=1)")
   echo "Building neovim $NVIM_TAG..."
   git checkout "$NVIM_TAG"
-  make CMAKE_BUILD_TYPE=RelWithDebInfo
+  # Upgrade neovim by first git fetch --tags and check out to the tag.
+  # If the rebuild encouters some errors, we could first make clean and remove the `.deps` folder
+  # and build it again.
+  make CMAKE_BUILD_TYPE=Release
   sudo make install
   cd - || exit 1
 }
