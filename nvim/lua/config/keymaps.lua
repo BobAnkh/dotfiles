@@ -26,6 +26,10 @@ vim.keymap.set("n", "<localleader>c", '"+d', { desc = "Cut into + register" })
 vim.keymap.set("n", "<localleader>C", '"+D', { desc = "Cut into + register" })
 vim.keymap.set("v", "<localleader>c", '"+d', { desc = "Cut into + register" })
 
+-- Fast search and replace
+-- vim.keymap.set("n", "<localleader>s", 'viw"-y:%s/<C-r>-/<C-r>-/g<Left><Left>')
+vim.keymap.set("v", "<localleader>s", '"-y:%s/<C-r>-/<C-r>-/g<Left><Left>')
+
 -- Move block
 -- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Block Down" })
 -- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Block Up" })
