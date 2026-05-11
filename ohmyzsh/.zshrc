@@ -12,6 +12,8 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export TERM="xterm-256color"
+# export TERM_PROGRAM=wezterm
+# eval "$(luarocks path --local 2>/dev/null)"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -155,6 +157,12 @@ alias zj='zellij'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias lg='lazygit'
 alias n='nvim'
+
+sview() {
+  local im=$1
+  shift
+  convert $im $@ sixel:-
+}
 
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
