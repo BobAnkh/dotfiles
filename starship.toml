@@ -1,0 +1,167 @@
+# Starship config — reproduces the look of the user's p10k "lean_8colors" theme.
+# Frame: ╭─ / ╰─ in grey (256-color 244), 2-line prompt, empty line above.
+# Right-side content lives on line 1 via $fill (since starship's right_format
+# renders next to $character on line 2; using $fill keeps right segments on top).
+
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """
+[╭─](244)$username$hostname$conda$python$nodejs$rust$golang$directory$git_branch$git_status$fill$status$cmd_duration$jobs$direnv$kubernetes$terraform$aws$gcloud$azure$time
+[╰─](244)$character """
+
+# Right-side modules disabled here so they only render via $fill above.
+right_format = ""
+
+[fill]
+symbol = " "
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+# Context (user@host) — only show under SSH or root, matching p10k.
+[username]
+show_always = false
+style_user = "yellow"
+style_root = "bold red"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = true
+style = "yellow"
+format = "[@$hostname]($style) "
+
+[directory]
+# Repo-anchored display: outside a repo show full ~-path; inside a repo
+# dim the prefix leading to the repo root, then highlight the repo name +
+# the path within the repo. Requires starship >= 1.18.
+style = "blue"
+truncation_length = 0
+truncate_to_repo = false
+truncation_symbol = ""
+format = "[$path]($style)[$read_only]($read_only_style) "
+repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
+before_repo_root_style = "bright-black"
+repo_root_style = "bold blue"
+read_only = " "
+read_only_style = "red"
+
+[git_branch]
+symbol = " "
+style = "green"
+format = "[$symbol$branch]($style) "
+truncation_length = 32
+truncation_symbol = "…"
+
+[git_status]
+style = "green"
+conflicted = "[~$count](red)"
+ahead = "⇡$count"
+behind = "⇣$count"
+diverged = "⇣${behind_count}⇡${ahead_count}"
+up_to_date = ""
+untracked = "[?$count](blue)"
+stashed = "*$count"
+modified = "[!$count](yellow)"
+staged = "[+$count](yellow)"
+renamed = "[»$count](yellow)"
+deleted = "[✘$count](red)"
+format = '([$all_status$ahead_behind]($style)) '
+
+# Python — show only when a virtualenv is active (matches p10k's virtualenv segment).
+[python]
+symbol = ""
+style = "cyan"
+format = "[($virtualenv)]($style) "
+detect_extensions = []
+detect_files = []
+detect_folders = []
+python_binary = []
+pyenv_version_name = false
+
+# Conda — hide when in "base", show env name otherwise.
+[conda]
+style = "cyan"
+symbol = ""
+format = "[$symbol$environment]($style) "
+ignore_base = true
+
+[nodejs]
+symbol = " "
+style = "green"
+format = "[$symbol$version]($style) "
+detect_files = ["package.json", ".nvmrc", ".node-version"]
+
+[rust]
+symbol = " "
+style = "yellow"
+format = "[$symbol$version]($style) "
+
+[golang]
+symbol = " "
+style = "cyan"
+format = "[$symbol$version]($style) "
+
+# Right-aligned content (rendered via $fill on line 1).
+
+[status]
+disabled = false
+success_symbol = "[✔](green)"
+symbol = "[✘](red)"
+not_executable_symbol = "[✘](red)"
+not_found_symbol = "[✘](red)"
+sigint_symbol = "[✘](red)"
+signal_symbol = "[✘](red)"
+format = "[$symbol]($style) "
+
+[cmd_duration]
+min_time = 3000
+style = "yellow"
+format = "[$duration]($style) "
+
+[jobs]
+symbol = "⚙ "
+style = "red"
+number_threshold = 1
+format = "[$symbol$number]($style) "
+
+[direnv]
+disabled = false
+style = "yellow"
+symbol = ""
+format = "[$loaded/$allowed]($style) "
+
+[kubernetes]
+disabled = false
+style = "cyan"
+symbol = "☸ "
+format = '[$symbol$context(\($namespace\))]($style) '
+
+[terraform]
+style = "magenta"
+symbol = "💠 "
+format = "[$symbol$workspace]($style) "
+
+[aws]
+style = "yellow"
+symbol = " "
+format = '[$symbol($profile)(\($region\))]($style) '
+
+[gcloud]
+style = "yellow"
+symbol = "☁️  "
+format = '[$symbol$account(@$domain)(\($project\))]($style) '
+
+[azure]
+style = "blue"
+disabled = false
+format = "[$symbol($subscription)]($style) "
+
+[time]
+disabled = false
+style = "cyan"
+format = "[$time]($style) "
+time_format = "%H:%M:%S"
